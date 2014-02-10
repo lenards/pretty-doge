@@ -23,7 +23,7 @@ def get_color(color):
         return getrgb("#" + color)
 
 
-@app.route("/doge/<color>")
+@app.route("/<color>")
 def doge_color(color):
     if cache.get(color):
         return send_file(cache.get(color), mimetype="image/png")
@@ -40,9 +40,9 @@ def doge_color(color):
         return abort(404)
 
 
-@app.route("/doge/")
+@app.route("/")
 def doge():
-    color = request.args.get("color", "#040404")
+    color = request.args.get("color", "#343434")
     return doge_color(color)
 
 
