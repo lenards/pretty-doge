@@ -1,4 +1,5 @@
 import StringIO
+from string import hexdigits
 
 from flask import Flask, abort, make_response, send_file, request
 
@@ -15,8 +16,19 @@ im = doge_image.ImageManager()
 
 app = Flask(__name__)
 
+def hash_to_color(digest):
+    """
+    Given a 32-byte hexidecimal string, return a color as an integer three-tuple
+    """
+    color = int(digest, 16) % (2 ** 24)
+    return tuple([color / 2 ** (8 * i) % 2 ** 8 for i in xrange(3)])
 
 def get_color(color):
+    """
+    Interpret some string as a color represented as a integer three tuple
+    """
+    if len(color) == 32 and all(c in hexdigits for c in color):
+        return hash_to_color(color)
     try:
         return getrgb(color)
     except:
