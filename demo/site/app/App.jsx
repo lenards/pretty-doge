@@ -36,7 +36,9 @@ export default React.createClass({
     render: function() {
         return (
             <Container>
-                <Heading level={1}>generate a pretty-doge-icon</Heading>
+                <Flex align='center' justify='center' auto={true} p={1}>
+                    <Heading level={1}>generate a pretty-doge-icon</Heading>
+                </Flex>
                 <Input
                     name="doge_icon_example"
                     placeholder="Enter text here"
