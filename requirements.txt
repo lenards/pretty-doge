@@ -1,4 +1,4 @@
-Flask==0.10
-Pillow==2.3
-numpy==1.8
-pylibmc==1.2
+Flask==1.1
+Pillow==7.1
+numpy==1.18
+pylibmc==1.6
